@@ -25,20 +25,24 @@ namespace AccessControlLibrary
 		_hash_salt = hash_salt;
 	}
 
-	std::string Configuration::getBaseApiUrl()
+	std::string Configuration::getBaseApiUrl() const
 	{
+		return _base_api_url;
 	}
 
-	std::array<unsigned char, 20> Configuration::getPublicKeyHash()
+	std::array<unsigned char, 20> Configuration::getPublicKeyHash() const
 	{
+		return _key_hash;
 	}
 
-	int Configuration::getProductId()
+	int Configuration::getProductId() const
 	{
+		return _product_id;
 	}
 
-	std::string Configuration::getHashSalt()
+	std::string Configuration::getHashSalt() const
 	{
+		return _hash_salt;
 	}
 
 	Configuration::~Configuration()

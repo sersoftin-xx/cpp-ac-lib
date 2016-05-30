@@ -13,10 +13,10 @@ namespace AccessControlLibrary
 		void setProductId(int product_id);
 		void setHashSalt(std::string hash_salt);
 
-		std::string getBaseApiUrl();
-		std::array<unsigned char, 20> getPublicKeyHash();
-		int getProductId();
-		std::string getHashSalt();
+		std::string getBaseApiUrl() const;
+		std::array<unsigned char, 20> getPublicKeyHash() const;
+		int getProductId() const;
+		std::string getHashSalt() const;
 
 		~Configuration();
 	private:
