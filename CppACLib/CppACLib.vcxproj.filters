@@ -32,16 +32,28 @@
     <ClInclude Include="Bid.h">
       <Filter>Заголовочные файлы\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="Product.h">
+      <Filter>Заголовочные файлы\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Api.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Configuration.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="AccessControl.cpp">
-      <Filter>Файлы исходного кода</Filter>
+    <ClCompile Include="Product.cpp">
+      <Filter>Файлы исходного кода\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Bid.cpp">
       <Filter>Файлы исходного кода\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="AccessControl.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Api.cpp">
+      <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
