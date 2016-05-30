@@ -46,11 +46,11 @@ namespace AccessControlLibrary
 			return result;
 		}
 
-		std::string TowerWmiInfo::getBaseboard() const
+		AccessContolLibrary::Hardware::Baseboard TowerWmiInfo::getBaseboard() const
 		{
-			std::string result;
+			AccessContolLibrary::Hardware::Baseboard baseboard;
 			IEnumWbemClassObject* pEnumerator = nullptr;
-			auto hres = pSvc->ExecQuery(L"WQL", L"SELECT UUID FROM Win32_ComputerSystemProduct", WBEM_FLAG_FORWARD_ONLY | WBEM_FLAG_RETURN_IMMEDIATELY, nullptr, &pEnumerator);
+			auto hres = pSvc->ExecQuery(L"WQL", L"SELECT Manufacturer,Product,SerialNumber FROM Win32_BaseBoard", WBEM_FLAG_FORWARD_ONLY | WBEM_FLAG_RETURN_IMMEDIATELY, nullptr, &pEnumerator);
 			checkForError(hres);
 			IWbemClassObject *pclsObj = nullptr;
 			ULONG uReturn = 0;
@@ -60,19 +60,39 @@ namespace AccessControlLibrary
 			{
 				checkForError(hres);
 				VARIANT vtProp;
-				hres = pclsObj->Get(L"UUID", 0, &vtProp, nullptr, nullptr);
+				hres = pclsObj->Get(L"Manufacturer", 0, &vtProp, nullptr, nullptr);
 				checkForError(hres);
 				if ((vtProp.vt == VT_NULL) || (vtProp.vt == VT_EMPTY))
-					result = vtProp.vt == VT_NULL ? "NULL" : "EMPTY";
+					baseboard.setManufacturer(vtProp.vt == VT_NULL ? "NULL" : "EMPTY");
 				else
-					result = _bstr_t(vtProp.bstrVal);
+				{
+					baseboard.setManufacturer(std::string(_bstr_t(vtProp.bstrVal)));
+				}
+				VariantClear(&vtProp);
+				hres = pclsObj->Get(L"Product", 0, &vtProp, nullptr, nullptr);
+				checkForError(hres);
+				if ((vtProp.vt == VT_NULL) || (vtProp.vt == VT_EMPTY))
+					baseboard.setProduct(vtProp.vt == VT_NULL ? "NULL" : "EMPTY");
+				else
+				{
+					baseboard.setProduct(std::string(_bstr_t(vtProp.bstrVal)));
+				}
+				VariantClear(&vtProp);
+				hres = pclsObj->Get(L"SerialNumber", 0, &vtProp, nullptr, nullptr);
+				checkForError(hres);
+				if ((vtProp.vt == VT_NULL) || (vtProp.vt == VT_EMPTY))
+					baseboard.setSerialNumber(vtProp.vt == VT_NULL ? "NULL" : "EMPTY");
+				else
+				{
+					baseboard.setSerialNumber(std::string(_bstr_t(vtProp.bstrVal)));
+				}
 				VariantClear(&vtProp);
 			}
 			if (pclsObj != nullptr)
 				pclsObj->Release();
 			if (pEnumerator != nullptr)
 				pEnumerator->Release();
-			return result;
+			return baseboard;
 		}
 
 		TowerWmiInfo::~TowerWmiInfo()

@@ -14,9 +14,9 @@ namespace AccessContolLibrary
 			std::string getProduct() const;
 			std::string getSerialNumber() const;
 
-			void setManufacturer() const;
-			void setProduct() const;
-			void setSerialNumber() const;
+			void setManufacturer(std::string manufacturer);
+			void setProduct(std::string product);
+			void setSerialNumber(std::string serial_number);
 
 			~Baseboard();
 
