@@ -144,7 +144,12 @@
   <ItemGroup>
     <ProjectReference Include="..\CppACLib\CppACLib.vcxproj">
       <Project>{78e2fc06-e56e-457f-bf13-8200ccf2cde3}</Project>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

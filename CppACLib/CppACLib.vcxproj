@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Configuration.h" />
+    <ClCompile Include="Configuration.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Configuration.cpp" />
+    <ClInclude Include="Configuration.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{78E2FC06-E56E-457F-BF13-8200CCF2CDE3}</ProjectGuid>
@@ -109,6 +109,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
