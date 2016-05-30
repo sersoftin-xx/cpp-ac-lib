@@ -8,6 +8,7 @@ namespace AccessControlLibrary
 		class AccessRequest
 		{
 		public:
+			AccessRequest();
 			AccessRequest(const std::string& pc_name, const std::string& pc_unique_key, int product_id);
 
 			std::string getPcName() const;

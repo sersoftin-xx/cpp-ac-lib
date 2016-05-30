@@ -4,6 +4,14 @@ namespace AccessControlLibrary
 {
 	namespace Entities
 	{
+		AccessRequest::AccessRequest()
+			: _pc_name(""),
+			_pc_unique_key(""),
+			_product_id(0)
+		{
+
+		}
+
 		AccessRequest::AccessRequest(const std::string& pc_name, const std::string& pc_unique_key, int product_id)
 			: _pc_name(pc_name),
 			_pc_unique_key(pc_unique_key),
