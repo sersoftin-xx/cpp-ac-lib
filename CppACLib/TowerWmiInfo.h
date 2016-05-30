@@ -3,6 +3,7 @@
 #include <comdef.h>
 #include <Wbemidl.h>
 #include "Baseboard.h"
+#include "SystemEnclosure.h"
 
 namespace AccessControlLibrary
 {
@@ -14,7 +15,8 @@ namespace AccessControlLibrary
 			TowerWmiInfo();
 
 			std::string getPcUuid() const;
-			AccessContolLibrary::Hardware::Baseboard getBaseboard() const;
+			Baseboard getBaseboard() const;
+			SystemEnclosure getSystemEnclosure() const;
 
 			~TowerWmiInfo();
 		private:

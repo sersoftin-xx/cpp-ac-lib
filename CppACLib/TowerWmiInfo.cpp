@@ -46,9 +46,9 @@ namespace AccessControlLibrary
 			return result;
 		}
 
-		AccessContolLibrary::Hardware::Baseboard TowerWmiInfo::getBaseboard() const
+		Baseboard TowerWmiInfo::getBaseboard() const
 		{
-			AccessContolLibrary::Hardware::Baseboard baseboard;
+			Baseboard baseboard;
 			IEnumWbemClassObject* pEnumerator = nullptr;
 			auto hres = pSvc->ExecQuery(L"WQL", L"SELECT Manufacturer,Product,SerialNumber FROM Win32_BaseBoard", WBEM_FLAG_FORWARD_ONLY | WBEM_FLAG_RETURN_IMMEDIATELY, nullptr, &pEnumerator);
 			checkForError(hres);

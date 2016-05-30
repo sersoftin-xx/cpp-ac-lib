@@ -1,6 +1,6 @@
 #include "Baseboard.h"
 
-namespace AccessContolLibrary
+namespace AccessControlLibrary
 {
 	namespace Hardware
 	{

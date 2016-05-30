@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-namespace AccessContolLibrary
+namespace AccessControlLibrary
 {
 	namespace Hardware
 	{
