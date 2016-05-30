@@ -41,6 +41,9 @@
     <ClInclude Include="AccessRequest.h">
       <Filter>Заголовочные файлы\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="TowerWmiInfo.h">
+      <Filter>Заголовочные файлы\Hardware</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Configuration.cpp">
@@ -60,6 +63,9 @@
     </ClCompile>
     <ClCompile Include="AccessRequest.cpp">
       <Filter>Файлы исходного кода\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="TowerWmiInfo.cpp">
+      <Filter>Файлы исходного кода\Hardware</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
