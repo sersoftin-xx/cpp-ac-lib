@@ -22,6 +22,7 @@
     <ClCompile Include="AccessControl.cpp" />
     <ClCompile Include="AccessRequest.cpp" />
     <ClCompile Include="Api.cpp" />
+    <ClCompile Include="Baseboard.cpp" />
     <ClCompile Include="Bid.cpp" />
     <ClCompile Include="Configuration.cpp" />
     <ClCompile Include="Product.cpp" />
@@ -32,6 +33,7 @@
     <ClInclude Include="AccessControl.h" />
     <ClInclude Include="AccessRequest.h" />
     <ClInclude Include="Api.h" />
+    <ClInclude Include="Baseboard.h" />
     <ClInclude Include="Bid.h" />
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="Product.h" />

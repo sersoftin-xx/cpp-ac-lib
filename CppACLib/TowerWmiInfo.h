@@ -13,6 +13,7 @@ namespace AccessControlLibrary
 			TowerWmiInfo();
 
 			std::string getPcUuid() const;
+			std::string getBaseboard() const;
 
 			~TowerWmiInfo();
 		private:

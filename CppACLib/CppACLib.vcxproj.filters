@@ -47,6 +47,9 @@
     <ClInclude Include="Util.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="Baseboard.h">
+      <Filter>Заголовочные файлы\Hardware</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Configuration.cpp">
@@ -72,6 +75,9 @@
     </ClCompile>
     <ClCompile Include="Util.cpp">
       <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Baseboard.cpp">
+      <Filter>Файлы исходного кода\Hardware</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
