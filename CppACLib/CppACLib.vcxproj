@@ -134,7 +134,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>D:\libs\openssl\lib;D:\libs\jsoncpp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>jsoncpp.lib;libeay32.lib;ssleay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>jsoncpp.lib;libeay32.lib;ssleay32.lib;wbemuuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
