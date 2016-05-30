@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AccessControl.cpp" />
+    <ClCompile Include="AccessRequest.cpp" />
     <ClCompile Include="Api.cpp" />
     <ClCompile Include="Bid.cpp" />
     <ClCompile Include="Configuration.cpp" />
@@ -27,6 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccessControl.h" />
+    <ClInclude Include="AccessRequest.h" />
     <ClInclude Include="Api.h" />
     <ClInclude Include="Bid.h" />
     <ClInclude Include="Configuration.h" />
