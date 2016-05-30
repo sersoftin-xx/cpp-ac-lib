@@ -30,6 +30,11 @@ namespace AccessControlLibrary
 			return _serial_number;
 		}
 
+		std::string SystemEnclosure::getHash() const
+		{
+			return Util::sha256(_manufacturer + ":" + _serial_number);
+		}
+
 		SystemEnclosure::~SystemEnclosure()
 		{
 		}

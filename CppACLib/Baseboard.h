@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Util.h"
 
 namespace AccessControlLibrary
 {
@@ -17,6 +18,7 @@ namespace AccessControlLibrary
 			void setManufacturer(std::string manufacturer);
 			void setProduct(std::string product);
 			void setSerialNumber(std::string serial_number);
+			std::string getHash() const;
 
 			~Baseboard();
 

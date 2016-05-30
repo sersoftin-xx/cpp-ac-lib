@@ -41,6 +41,11 @@ namespace AccessControlLibrary
 			_serial_number = serial_number;
 		}
 
+		std::string Baseboard::getHash() const
+		{
+			return Util::sha256(_manufacturer + ":" + _product + ":" + _serial_number);
+		}
+
 		Baseboard::~Baseboard()
 		{
 		}
