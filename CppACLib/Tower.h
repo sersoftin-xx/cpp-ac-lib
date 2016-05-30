@@ -10,9 +10,14 @@ namespace AccessControlLibrary
 		{
 		public:
 			explicit Tower(std::string hash_salt);
+
+			std::string getUniqueKey() const;
+			std::string getPcName() const;
+
 			~Tower();
 		private:
-			TowerWmiInfo
+			TowerWmiInfo * _towerInfo;
+			std::string _hash_salt;
 		};
 	}
 }
