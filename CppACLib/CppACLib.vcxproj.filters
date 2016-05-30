@@ -44,6 +44,9 @@
     <ClInclude Include="TowerWmiInfo.h">
       <Filter>Заголовочные файлы\Hardware</Filter>
     </ClInclude>
+    <ClInclude Include="Util.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Configuration.cpp">
@@ -66,6 +69,9 @@
     </ClCompile>
     <ClCompile Include="TowerWmiInfo.cpp">
       <Filter>Файлы исходного кода\Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="Util1cpp">
+      <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

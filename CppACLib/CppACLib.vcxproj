@@ -26,6 +26,7 @@
     <ClCompile Include="Configuration.cpp" />
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="TowerWmiInfo.cpp" />
+    <ClCompile Include="Util1cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccessControl.h" />
@@ -35,6 +36,7 @@
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="Product.h" />
     <ClInclude Include="TowerWmiInfo.h" />
+    <ClInclude Include="Util.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{78E2FC06-E56E-457F-BF13-8200CCF2CDE3}</ProjectGuid>
