@@ -3,6 +3,7 @@
 #include "Bid.h"
 #include "Product.h"
 #include <vector>
+#include "Api.h"
 
 namespace AccessControlLibrary
 {
@@ -23,5 +24,6 @@ namespace AccessControlLibrary
 		~AccessControl();
 	private:
 		Configuration * _config;
+		Api * _api;
 	};
 }

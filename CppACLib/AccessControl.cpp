@@ -5,11 +5,13 @@ namespace AccessControlLibrary
 
 	AccessControl::~AccessControl()
 	{
+		delete _api;
 	}
 
 	AccessControl::AccessControl(Configuration* configuration)
 	{
 		_config = configuration;
+		_api = new Api();
 	}
 
 	bool AccessControl::accessAllowed()

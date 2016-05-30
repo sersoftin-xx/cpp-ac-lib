@@ -10,11 +10,9 @@ namespace AccessControlLibrary
 		_base_api_url = base_api_url;
 	}
 
-	void Configuration::setPublicKeyHash(unsigned char* public_key_hash, size_t public_key_hash_len)
+	void Configuration::setPublicKeyHash(std::array<unsigned char, 20> key_hash)
 	{
-		if (sizeof(_public_key_hash) != public_key_hash_len)
-			throw std::exception("Public key hash len more or small 20 bytes.");
-		memcpy(_public_key_hash, public_key_hash, public_key_hash_len);
+		_key_hash = key_hash;
 	}
 
 	void Configuration::setProductId(int product_id)
@@ -25,6 +23,22 @@ namespace AccessControlLibrary
 	void Configuration::setHashSalt(std::string hash_salt)
 	{
 		_hash_salt = hash_salt;
+	}
+
+	std::string Configuration::getBaseApiUrl()
+	{
+	}
+
+	std::array<unsigned char, 20> Configuration::getPublicKeyHash()
+	{
+	}
+
+	int Configuration::getProductId()
+	{
+	}
+
+	std::string Configuration::getHashSalt()
+	{
 	}
 
 	Configuration::~Configuration()
