@@ -70,7 +70,7 @@
     <ClCompile Include="TowerWmiInfo.cpp">
       <Filter>Файлы исходного кода\Hardware</Filter>
     </ClCompile>
-    <ClCompile Include="Util1cpp">
+    <ClCompile Include="Util.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>

@@ -26,7 +26,7 @@
     <ClCompile Include="Configuration.cpp" />
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="TowerWmiInfo.cpp" />
-    <ClCompile Include="Util1cpp" />
+    <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccessControl.h" />

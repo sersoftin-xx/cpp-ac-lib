@@ -1,8 +1,9 @@
 #pragma once
+#include <string>
+
 class Util
 {
 public:
-	Util();
-	~Util();
+	static std::string sha256(std::string input_string);
 };
 
