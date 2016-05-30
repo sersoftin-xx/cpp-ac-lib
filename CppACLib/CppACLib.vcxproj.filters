@@ -39,7 +39,7 @@
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
     <ClInclude Include="AccessRequest.h">
-      <Filter>Заголовочные файлы</Filter>
+      <Filter>Заголовочные файлы\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -59,7 +59,7 @@
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
     <ClCompile Include="AccessRequest.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>Файлы исходного кода\Entities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
