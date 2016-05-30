@@ -53,6 +53,9 @@
     <ClInclude Include="SystemEnclosure.h">
       <Filter>Заголовочные файлы\Hardware</Filter>
     </ClInclude>
+    <ClInclude Include="Tower.h">
+      <Filter>Заголовочные файлы\Hardware</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Configuration.cpp">
@@ -83,6 +86,9 @@
       <Filter>Файлы исходного кода\Hardware</Filter>
     </ClCompile>
     <ClCompile Include="SystemEnclosure.cpp">
+      <Filter>Файлы исходного кода\Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="Tower.cpp">
       <Filter>Файлы исходного кода\Hardware</Filter>
     </ClCompile>
   </ItemGroup>
