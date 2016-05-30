@@ -1,5 +1,5 @@
 #pragma once
-#include <string>
+#include <json/json.h>
 
 namespace AccessControlLibrary
 {
@@ -17,6 +17,9 @@ namespace AccessControlLibrary
 			void setPcName(std::string pc_name);
 			void setPcUniqueKey(std::string pc_unique_key);
 			void setProductId(int product_id);
+
+			std::string Serialize() const;
+			bool Deserialize(std::string json_content);
 
 		private:
 			std::string _pc_name;

@@ -41,5 +41,27 @@ namespace AccessControlLibrary
 		{
 			_product_id = product_id;
 		}
+
+		std::string AccessRequest::Serialize() const
+		{
+			Json::Value root;
+			root["pc_name"] = _pc_name;
+			root["pc_unique_key"] = _pc_unique_key;
+			root["product_id"] = _product_id;
+			Json::StyledWriter writer;
+			return writer.write(root);
+		}
+
+		bool AccessRequest::Deserialize(std::string json_content)
+		{
+			Json::Value root;
+			Json::Reader reader;
+			if (!reader.parse(json_content, root))
+				return false;
+			_pc_name = root.get("pc_name", "").asString();
+			_pc_unique_key = root.get("pc_unique_key", "").asString();
+			_product_id = root.get("product_id", "").asInt();
+			return true;
+		}
 	}
 }
