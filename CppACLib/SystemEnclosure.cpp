@@ -1,12 +1,37 @@
 #include "SystemEnclosure.h"
 
-
-
-SystemEnclosure::SystemEnclosure()
+namespace AccessControlLibrary
 {
-}
+	namespace Hardware
+	{
+		SystemEnclosure::SystemEnclosure()
+			:_manufacturer(""),
+			_serial_number("")
+		{
+		}
 
+		void SystemEnclosure::setManufacturer(std::string manufacturer)
+		{
+			_manufacturer = manufacturer;
+		}
 
-SystemEnclosure::~SystemEnclosure()
-{
+		void SystemEnclosure::setSerialNumber(std::string serial_number)
+		{
+			_serial_number = serial_number;
+		}
+
+		std::string SystemEnclosure::getManufacturer() const
+		{
+			return _manufacturer;
+		}
+
+		std::string SystemEnclosure::getSerialNumber() const
+		{
+			return _serial_number;
+		}
+
+		SystemEnclosure::~SystemEnclosure()
+		{
+		}
+	}
 }
