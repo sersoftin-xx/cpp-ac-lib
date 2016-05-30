@@ -19,9 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AccessControl.cpp" />
+    <ClCompile Include="Bid.cpp" />
     <ClCompile Include="Configuration.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AccessControl.h" />
+    <ClInclude Include="Bid.h" />
     <ClInclude Include="Configuration.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

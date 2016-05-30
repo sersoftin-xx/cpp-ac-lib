@@ -9,15 +9,39 @@
       <UniqueIdentifier>{cf6ce6e9-becf-4933-979b-ed65ed78496e}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Заголовочные файлы\Entities">
+      <UniqueIdentifier>{9bab16c9-3edd-4235-aa7f-8bdbde77ad18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Hardware">
+      <UniqueIdentifier>{3b2c9a6b-cb71-4078-9a5f-0de526e701dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Entities">
+      <UniqueIdentifier>{c5e5ac9f-f6ad-4d00-8bfd-343a290f5476}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Hardware">
+      <UniqueIdentifier>{0a328924-995b-4679-a403-9f2335e75af6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Configuration.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="AccessControl.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Bid.h">
+      <Filter>Заголовочные файлы\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Configuration.cpp">
       <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="AccessControl.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Bid.cpp">
+      <Filter>Файлы исходного кода\Entities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
