@@ -11,7 +11,7 @@ namespace AccessControlLibrary
 	AccessControl::AccessControl(Configuration* configuration)
 	{
 		_config = configuration;
-		_api = new Api();
+		_api = new Api(_config->getBaseApiUrl(), _config->getPublicKeyHash());
 	}
 
 	bool AccessControl::accessAllowed()
