@@ -26,6 +26,7 @@
     <ClCompile Include="Bid.cpp" />
     <ClCompile Include="Configuration.cpp" />
     <ClCompile Include="Product.cpp" />
+    <ClCompile Include="SystemEnclosure.cpp" />
     <ClCompile Include="TowerWmiInfo.cpp" />
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
@@ -37,6 +38,7 @@
     <ClInclude Include="Bid.h" />
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="Product.h" />
+    <ClInclude Include="SystemEnclosure.h" />
     <ClInclude Include="TowerWmiInfo.h" />
     <ClInclude Include="Util.h" />
   </ItemGroup>
