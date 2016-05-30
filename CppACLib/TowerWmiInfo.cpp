@@ -95,6 +95,46 @@ namespace AccessControlLibrary
 			return baseboard;
 		}
 
+		SystemEnclosure TowerWmiInfo::getSystemEnclosure() const
+		{
+			SystemEnclosure system_enclosure;
+			IEnumWbemClassObject* pEnumerator = nullptr;
+			auto hres = pSvc->ExecQuery(L"WQL", L"SELECT Manufacturer,SerialNumber FROM Win32_SystemEnclosure", WBEM_FLAG_FORWARD_ONLY | WBEM_FLAG_RETURN_IMMEDIATELY, nullptr, &pEnumerator);
+			checkForError(hres);
+			IWbemClassObject *pclsObj = nullptr;
+			ULONG uReturn = 0;
+
+			hres = pEnumerator->Next(WBEM_INFINITE, 1, &pclsObj, &uReturn);
+			if (uReturn)
+			{
+				checkForError(hres);
+				VARIANT vtProp;
+				hres = pclsObj->Get(L"Manufacturer", 0, &vtProp, nullptr, nullptr);
+				checkForError(hres);
+				if ((vtProp.vt == VT_NULL) || (vtProp.vt == VT_EMPTY))
+					system_enclosure.setManufacturer(vtProp.vt == VT_NULL ? "NULL" : "EMPTY");
+				else
+				{
+					system_enclosure.setManufacturer(std::string(_bstr_t(vtProp.bstrVal)));
+				}
+				VariantClear(&vtProp);
+				hres = pclsObj->Get(L"SerialNumber", 0, &vtProp, nullptr, nullptr);
+				checkForError(hres);
+				if ((vtProp.vt == VT_NULL) || (vtProp.vt == VT_EMPTY))
+					system_enclosure.setSerialNumber(vtProp.vt == VT_NULL ? "NULL" : "EMPTY");
+				else
+				{
+					system_enclosure.setSerialNumber(std::string(_bstr_t(vtProp.bstrVal)));
+				}
+				VariantClear(&vtProp);
+			}
+			if (pclsObj != nullptr)
+				pclsObj->Release();
+			if (pEnumerator != nullptr)
+				pEnumerator->Release();
+			return system_enclosure;
+		}
+
 		TowerWmiInfo::~TowerWmiInfo()
 		{
 			if (pSvc != nullptr)
