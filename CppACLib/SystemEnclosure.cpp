@@ -5,8 +5,6 @@ namespace AccessControlLibrary
 	namespace Hardware
 	{
 		SystemEnclosure::SystemEnclosure()
-			:_manufacturer(""),
-			_serial_number("")
 		{
 		}
 
