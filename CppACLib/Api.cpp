@@ -11,8 +11,10 @@ namespace AccessControlLibrary
 
 	std::vector<Entities::Product> Api::getProductsList()
 	{
+		auto json_response = executeGetApiMethod("/products/list");
 		std::vector<Entities::Product> products;
-
+		Entities::Product product;
+		product.Deserialize(json_response);
 	}
 
 	Entities::Product Api::getProductInfo(int product_id)

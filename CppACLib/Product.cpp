@@ -59,6 +59,18 @@ namespace AccessControlLibrary
 			return true;
 		}
 
+		bool Product::Deserialize(std::string json_content, std::string parent_root)
+		{
+			Json::Value root;
+			Json::Reader reader;
+			if (!reader.parse(json_content, root))
+				return false;
+			_id = root[parent_root].get("id", 0).asInt();
+			_name = root[parent_root].get("name", "").asString();
+			_description = root[parent_root].get("description", "").asString();
+			return true;
+		}
+
 		Product::~Product()
 		{
 		}

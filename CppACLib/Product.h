@@ -21,6 +21,7 @@ namespace AccessControlLibrary
 
 			std::string Serialize() const;
 			bool Deserialize(std::string json_content);
+			bool Deserialize(std::string json_content, std::string parent_root);
 
 			~Product();
 		private:
