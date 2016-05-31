@@ -17,6 +17,7 @@ namespace AccessControlLibrary
 
 	Entities::Product Api::getProductInfo(int product_id)
 	{
+
 	}
 
 	Entities::Bid Api::check(std::string pc_unique_key, int product_id)

@@ -1,4 +1,5 @@
 #include "Product.h"
+
 namespace AccessControlLibrary
 {
 	namespace Entities
@@ -34,6 +35,28 @@ namespace AccessControlLibrary
 		void Product::setDescription(std::string description)
 		{
 			_description = description;
+		}
+
+		std::string Product::Serialize() const
+		{
+			Json::Value root;
+			root["id"] = _id;
+			root["name"] = _name;
+			root["description"] = _description;
+			Json::StyledWriter writer;
+			return writer.write(root);
+		}
+
+		bool Product::Deserialize(std::string json_content)
+		{
+			Json::Value root;
+			Json::Reader reader;
+			if (!reader.parse(json_content, root))
+				return false;
+			_id = root.get("id", 0).asInt();
+			_name = root.get("name", "").asString();
+			_description = root.get("description", "").asString();
+			return true;
 		}
 
 		Product::~Product()
