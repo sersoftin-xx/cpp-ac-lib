@@ -13,7 +13,7 @@ namespace AccessControlLibrary
 	{
 	}
 
-	Entities::Product Api::getProductInfo()
+	Entities::Product Api::getProductInfo(int product_id)
 	{
 	}
 
@@ -29,12 +29,17 @@ namespace AccessControlLibrary
 		return bid;
 	}
 
-	std::string Api::executeGetApiMethod(std::string method_name)
+	std::string Api::executeGetApiMethod(std::string method_name) const
 	{
-		return std::string();
+		auto response = RestClient::get(_base_url + "client_api" + method_name);
+		if (response.code != 200)
+		{
+			throw std::exception("Server return code: " + response.code);
+		}
+		return response.body;
 	}
 
-	std::string Api::executePostApiMethod(std::string method_name, Entities::AccessRequest request_body)
+	std::string Api::executePostApiMethod(std::string method_name, Entities::AccessRequest request_body) const
 	{
 		return std::string();
 	}

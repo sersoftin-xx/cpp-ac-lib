@@ -8,7 +8,27 @@ namespace AccessControlLibrary
 		{
 		public:
 			Bid();
+
+			int getId() const;
+			int getProductId() const;
+			int getPcId() const;
+			bool getIsActive() const;
+			bool getIsExpired() const;
+
+			void setId(int id);
+			void setProductId(int product_id);
+			void setPcId(int pc_id);
+			void setIsActive(bool is_active);
+			void setIsExpired(bool is_expired);
+
 			~Bid();
+
+		private:
+			int _id;
+			int _product_id;
+			int _pc_id;
+			bool _is_active;
+			bool _is_expired;
 		};
 	}
 }

@@ -21,6 +21,12 @@
     <Filter Include="Файлы исходного кода\Hardware">
       <UniqueIdentifier>{0a328924-995b-4679-a403-9f2335e75af6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\restclient">
+      <UniqueIdentifier>{55a31feb-cfa8-4e29-b48f-5148b6a9011c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\restclient">
+      <UniqueIdentifier>{17ac1d47-1293-4842-aae6-e2426a834ddd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Configuration.h">
@@ -56,6 +62,15 @@
     <ClInclude Include="Tower.h">
       <Filter>Заголовочные файлы\Hardware</Filter>
     </ClInclude>
+    <ClInclude Include="restclient-cpp\connection.h">
+      <Filter>Заголовочные файлы\restclient</Filter>
+    </ClInclude>
+    <ClInclude Include="restclient-cpp\helpers.h">
+      <Filter>Заголовочные файлы\restclient</Filter>
+    </ClInclude>
+    <ClInclude Include="restclient-cpp\restclient.h">
+      <Filter>Заголовочные файлы\restclient</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Configuration.cpp">
@@ -90,6 +105,15 @@
     </ClCompile>
     <ClCompile Include="Tower.cpp">
       <Filter>Файлы исходного кода\Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="restclient-cpp\connection.cc">
+      <Filter>Файлы исходного кода\restclient</Filter>
+    </ClCompile>
+    <ClCompile Include="restclient-cpp\helpers.cc">
+      <Filter>Файлы исходного кода\restclient</Filter>
+    </ClCompile>
+    <ClCompile Include="restclient-cpp\restclient.cc">
+      <Filter>Файлы исходного кода\restclient</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -26,6 +26,9 @@
     <ClCompile Include="Bid.cpp" />
     <ClCompile Include="Configuration.cpp" />
     <ClCompile Include="Product.cpp" />
+    <ClCompile Include="restclient-cpp\connection.cc" />
+    <ClCompile Include="restclient-cpp\helpers.cc" />
+    <ClCompile Include="restclient-cpp\restclient.cc" />
     <ClCompile Include="SystemEnclosure.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="TowerWmiInfo.cpp" />
@@ -39,6 +42,9 @@
     <ClInclude Include="Bid.h" />
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="Product.h" />
+    <ClInclude Include="restclient-cpp\connection.h" />
+    <ClInclude Include="restclient-cpp\helpers.h" />
+    <ClInclude Include="restclient-cpp\restclient.h" />
     <ClInclude Include="SystemEnclosure.h" />
     <ClInclude Include="Tower.h" />
     <ClInclude Include="TowerWmiInfo.h" />
@@ -130,7 +136,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>D:\libs\openssl\include;D:\libs\jsoncpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\libs\curl\include;D:\libs\openssl\include;D:\libs\jsoncpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>None</DebugInformationFormat>
     </ClCompile>
     <Link>
@@ -139,8 +145,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>D:\libs\openssl\lib;D:\libs\jsoncpp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>jsoncpp.lib;libeay32.lib;ssleay32.lib;wbemuuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\libs\curl\lib;D:\libs\openssl\lib;D:\libs\jsoncpp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>jsoncpp.lib;wbemuuid.lib;libcurl_a.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

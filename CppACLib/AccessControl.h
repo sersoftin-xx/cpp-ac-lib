@@ -4,6 +4,8 @@
 #include "Product.h"
 #include <vector>
 #include "Api.h"
+#include <memory>
+#include "Tower.h"
 
 namespace AccessControlLibrary
 {
@@ -12,14 +14,14 @@ namespace AccessControlLibrary
 	public:
 		explicit AccessControl(Configuration * configuration);
 
-		bool accessAllowed();
-		bool accessAllowed(int product_id);
+		bool accessAllowed() const;
+		bool accessAllowed(int product_id) const;
 
 		Entities::Bid requestAccess();
 		Entities::Bid requestAccess(int product_id);
 
-		std::vector<Entities::Product> getProducts();
-		Entities::Product getProductInfo(int product_id);
+		std::vector<Entities::Product> getProducts() const;
+		Entities::Product getProductInfo(int product_id) const;
 
 		~AccessControl();
 	private:

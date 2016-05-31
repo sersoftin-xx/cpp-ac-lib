@@ -14,14 +14,23 @@ namespace AccessControlLibrary
 		_api = new Api(_config->getBaseApiUrl(), _config->getPublicKeyHash());
 	}
 
-	bool AccessControl::accessAllowed()
+	bool AccessControl::accessAllowed() const
 	{
-		return false;
+		return accessAllowed(_config->getProductId());
 	}
 
-	bool AccessControl::accessAllowed(int product_id)
+	bool AccessControl::accessAllowed(int product_id) const
 	{
-		return false;
+		try
+		{
+			std::shared_ptr<Hardware::Tower> tower(new Hardware::Tower(_config->getHashSalt()));
+			auto bid = _api->check(tower->getUniqueKey(), product_id);
+			return bid.getIsActive() && !bid.getIsExpired();
+		}
+		catch (std::exception ex)
+		{
+			return false;
+		}
 	}
 
 	Entities::Bid AccessControl::requestAccess()
@@ -38,15 +47,13 @@ namespace AccessControlLibrary
 		return bid;
 	}
 
-	std::vector<Entities::Product> AccessControl::getProducts()
+	std::vector<Entities::Product> AccessControl::getProducts() const
 	{
-		std::vector<Entities::Product> products;
-		return products;
+		return _api->getProductsList();
 	}
 
-	Entities::Product AccessControl::getProductInfo(int product_id)
+	Entities::Product AccessControl::getProductInfo(int product_id) const
 	{
-		Entities::Product product;
-		return product;
+		return _api->getProductInfo(product_id);
 	}
 }
