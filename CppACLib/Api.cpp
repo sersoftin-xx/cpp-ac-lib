@@ -11,6 +11,8 @@ namespace AccessControlLibrary
 
 	std::vector<Entities::Product> Api::getProductsList()
 	{
+		std::vector<Entities::Product> products;
+
 	}
 
 	Entities::Product Api::getProductInfo(int product_id)
@@ -31,12 +33,7 @@ namespace AccessControlLibrary
 
 	std::string Api::executeGetApiMethod(std::string method_name) const
 	{
-		auto response = RestClient::get(_base_url + "client_api" + method_name);
-		if (response.code != 200)
-		{
-			throw std::exception("Server return code: " + response.code);
-		}
-		return response.body;
+		return std::string();
 	}
 
 	std::string Api::executePostApiMethod(std::string method_name, Entities::AccessRequest request_body) const

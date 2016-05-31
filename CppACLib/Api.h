@@ -4,7 +4,6 @@
 #include "Product.h"
 #include "Bid.h"
 #include <vector>
-#include "restclient-cpp/restclient.h"
 
 namespace AccessControlLibrary
 {
