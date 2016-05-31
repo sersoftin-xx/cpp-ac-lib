@@ -26,9 +26,6 @@
     <ClCompile Include="Bid.cpp" />
     <ClCompile Include="Configuration.cpp" />
     <ClCompile Include="Product.cpp" />
-    <ClCompile Include="restclient-cpp\connection.cc" />
-    <ClCompile Include="restclient-cpp\helpers.cc" />
-    <ClCompile Include="restclient-cpp\restclient.cc" />
     <ClCompile Include="SystemEnclosure.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="TowerWmiInfo.cpp" />
@@ -42,9 +39,6 @@
     <ClInclude Include="Bid.h" />
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="Product.h" />
-    <ClInclude Include="restclient-cpp\connection.h" />
-    <ClInclude Include="restclient-cpp\helpers.h" />
-    <ClInclude Include="restclient-cpp\restclient.h" />
     <ClInclude Include="SystemEnclosure.h" />
     <ClInclude Include="Tower.h" />
     <ClInclude Include="TowerWmiInfo.h" />
