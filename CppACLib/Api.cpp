@@ -39,6 +39,12 @@ namespace AccessControlLibrary
 	Entities::Bid Api::check(std::string pc_unique_key, int product_id)
 	{
 		Entities::Bid bid;
+		Entities::AccessRequest request_body;
+		request_body.setPcUniqueKey(pc_unique_key);
+		request_body.setProductId(product_id);
+		auto json_response = executePostApiMethod("/bids/check", request_body);
+		if (!bid.Deserialize(json_response, "bid"))
+			throw std::exception("Ivalid json data accepted.");
 		return bid;
 	}
 

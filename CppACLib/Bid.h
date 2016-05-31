@@ -1,4 +1,5 @@
 #pragma once
+#include <json/json.h>
 
 namespace AccessControlLibrary
 {
@@ -20,6 +21,9 @@ namespace AccessControlLibrary
 			void setPcId(int pc_id);
 			void setIsActive(bool is_active);
 			void setIsExpired(bool is_expired);
+
+			std::string Serialize() const;
+			bool Deserialize(std::string json_content, std::string parent_root);
 
 			~Bid();
 

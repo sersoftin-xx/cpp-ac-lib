@@ -64,6 +64,32 @@ namespace AccessControlLibrary
 			_is_expired = is_expired;
 		}
 
+		std::string Bid::Serialize() const
+		{
+			Json::Value root;
+			root["id"] = _id;
+			root["product_id"] = _product_id;
+			root["pc_id"] = _pc_id;
+			root["is_active"] = _is_active;
+			root["is_expired"] = _is_expired;
+			Json::StyledWriter writer;
+			return writer.write(root);
+		}
+
+		bool Bid::Deserialize(std::string json_content, std::string parent_root)
+		{
+			Json::Value root;
+			Json::Reader reader;
+			if (!reader.parse(json_content, root))
+				return false;
+			_id = root.get("id", 0).asInt();
+			_product_id = root.get("product_id", 0).asInt();
+			_pc_id = root.get("pc_id", 0).asInt();
+			_is_active = root.get("is_active", false).asBool();
+			_is_expired = root.get("is_expired", true).asBool();
+			return true;
+		}
+
 		Bid::~Bid()
 		{
 		}
