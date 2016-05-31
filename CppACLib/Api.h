@@ -4,6 +4,8 @@
 #include "Product.h"
 #include "Bid.h"
 #include <vector>
+#include <curl/curl.h>
+#include <sstream>
 
 namespace AccessControlLibrary
 {
@@ -23,7 +25,11 @@ namespace AccessControlLibrary
 		std::array<unsigned char, 20> _certHash;
 		std::string _base_url;
 
+		CURL * _curl;
+
 		std::string executeGetApiMethod(std::string method_name) const;
 		std::string executePostApiMethod(std::string method_name, Entities::AccessRequest request_body) const;
+
+		static size_t writeResponseCallback(void *ptr, size_t size, size_t nmemb, void *stream);
 	};
 }

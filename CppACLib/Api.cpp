@@ -6,6 +6,11 @@ namespace AccessControlLibrary
 	{
 		_base_url = base_url;
 		_certHash = cert_hash;
+		if (curl_global_init(CURL_GLOBAL_ALL) != CURLE_OK)
+			throw std::exception("Failed curl initilization");
+		_curl = curl_easy_init();
+		curl_easy_setopt(_curl, CURLOPT_SSL_VERIFYPEER, 1L);
+		curl_easy_setopt(_curl, CURLOPT_SSL_VERIFYHOST, 1L);
 	}
 
 	std::vector<Entities::Product> Api::getProductsList() const
@@ -56,7 +61,16 @@ namespace AccessControlLibrary
 
 	std::string Api::executeGetApiMethod(std::string method_name) const
 	{
-		return std::string("{  \"product\": {    \"id\": 1,    \"name\": \"test\",    \"addition_date\": null,    \"description\": null  }}");
+		curl_easy_setopt(_curl, CURLOPT_URL, (_base_url + "client_api" + method_name).c_str());
+		curl_easy_setopt(_curl, CURLOPT_WRITEFUNCTION, writeResponseCallback);
+		std::stringstream response_stream;
+		curl_easy_setopt(_curl, CURLOPT_WRITEDATA, &response_stream);
+		auto error_code = curl_easy_perform(_curl);
+		if (error_code != CURLE_OK)
+		{
+			throw std::exception(curl_easy_strerror(error_code));
+		}
+		return response_stream.str();
 	}
 
 	std::string Api::executePostApiMethod(std::string method_name, Entities::AccessRequest request_body) const
@@ -64,8 +78,16 @@ namespace AccessControlLibrary
 		return std::string();
 	}
 
+	size_t Api::writeResponseCallback(void* ptr, size_t size, size_t nmemb, void * stream)
+	{
+		fwrite(ptr, size, nmemb, static_cast<FILE*>(stream));
+		return (nmemb*size);
+	}
+
 	Api::~Api()
 	{
+		curl_easy_cleanup(_curl);
+		curl_global_cleanup();
 	}
 }
 
