@@ -18,7 +18,7 @@ int main()
 		AccessControlLibrary::AccessControl * acl = new AccessControlLibrary::AccessControl(config);
 		try
 		{
-			std::cout << acl->getProductInfo(2).getId() << ":" << acl->getProductInfo(2).getName() << std::endl;
+			std::cout << acl->getProductInfo(1).getId() << ":" << acl->getProductInfo(1).getName() << std::endl;
 		}
 		catch (AccessControlLibrary::Exceptions::CurlException & ex)
 		{
