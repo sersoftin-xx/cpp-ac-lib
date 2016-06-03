@@ -33,6 +33,10 @@ int main()
 	{
 		std::cout << "WebException: " << ex.getError().getCode() << ":" << ex.getError().getMessage() << ":" << ex.getError().getUrl() << std::endl;
 	}
+	catch (AccessControlLibrary::Exceptions::WmiException & ex)
+	{
+		std::cout << "WmiException: " << ex.what() << std::endl;
+	}
 	delete config;
 	delete acl;
 	getchar();
