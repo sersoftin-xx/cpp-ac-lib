@@ -37,6 +37,10 @@ int main()
 	{
 		std::cout << "WmiException: " << ex.what() << std::endl;
 	}
+	catch (std::runtime_error & ex)
+	{
+		std::cout << "exception: " << ex.what() << std::endl;
+	}
 	delete config;
 	delete acl;
 	getchar();

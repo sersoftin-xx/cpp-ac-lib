@@ -14,7 +14,7 @@ namespace AccessControlLibrary
 			checkForError(hres);
 			hres = CoCreateInstance(CLSID_WbemLocator, nullptr, CLSCTX_INPROC_SERVER, IID_IWbemLocator, reinterpret_cast<LPVOID *>(&pLoc));
 			checkForError(hres);
-			hres = pLoc->ConnectServer(L"\\\\.\\root\\CIMV2", nullptr, nullptr, nullptr, NULL, nullptr, nullptr, &pSvc);
+			hres = pLoc->ConnectServer(L"root\\CIMV2", nullptr, nullptr, nullptr, NULL, nullptr, nullptr, &pSvc);
 			checkForError(hres);
 		}
 

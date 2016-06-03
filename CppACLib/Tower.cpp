@@ -1,4 +1,5 @@
 #include "Tower.h"
+
 namespace AccessControlLibrary
 {
 	namespace Hardware
@@ -11,6 +12,8 @@ namespace AccessControlLibrary
 
 		std::string Tower::getUniqueKey() const
 		{
+			auto baseboard = _towerInfo->getBaseboard();
+			auto system_enclosure = _towerInfo->getSystemEnclosure();
 			auto baseboardHash = _towerInfo->getBaseboard().getHash();
 			auto systemEnclosureHash = _towerInfo->getSystemEnclosure().getHash();
 			auto uuidHash = Util::sha256(_towerInfo->getPcUuid());

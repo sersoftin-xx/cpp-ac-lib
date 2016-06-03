@@ -6,7 +6,7 @@ int main()
 {
 	setlocale(LC_ALL, "rus");
 	SetConsoleTitleW(L"AC Test Application");
-	std::cout << "AC Test - программа, которая позволяет проверить доступ ПО." << std::endl;
+	std::cout << "AC Test - программа, которая позволяет проверить доступ ПО. Номер продукта у этой программы - 1." << std::endl;
 
 	auto config = new AccessControlLibrary::Configuration();
 	config->setBaseApiUrl("https://acs.sersoftin.xyz/");
