@@ -14,6 +14,8 @@ namespace AccessControlLibrary
 			std::string getUrl() const;
 			int getCode() const;
 
+			void setCode(int error_code);
+
 			std::string Serialize() const;
 			bool Deserialize(std::string json_content);
 

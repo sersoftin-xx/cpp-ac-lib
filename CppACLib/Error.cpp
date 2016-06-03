@@ -25,6 +25,11 @@ namespace AccessControlLibrary
 			return _error_code;
 		}
 
+		void Error::setCode(int error_code)
+		{
+			_error_code = error_code;
+		}
+
 		Error::~Error()
 		{
 		}

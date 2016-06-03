@@ -8,14 +8,16 @@ namespace AccessControlLibrary
 			: exception(message),
 			_response(respose_content_string, http_error_code)
 		{
-			_error.Deserialize(respose_content_string);
+			if (!_error.Deserialize(respose_content_string))
+				_error.setCode(http_error_code);
 		}
 
 		WebException::WebException(std::string& message, std::string & respose_content_string, int http_error_code)
 			: exception(message.c_str()),
 			_response(respose_content_string, http_error_code)
 		{
-			_error.Deserialize(respose_content_string);
+			if (!_error.Deserialize(respose_content_string))
+				_error.setCode(http_error_code);
 		}
 
 		WebException::Response WebException::getResponse() const
