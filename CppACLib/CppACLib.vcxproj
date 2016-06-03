@@ -148,7 +148,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>D:\build-libcurl-windows-master\third-party\libcurl\lib\static-release-x86;D:\libs\openssl\lib;D:\libs\jsoncpp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>jsoncpp.lib;wbemuuid.lib;libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

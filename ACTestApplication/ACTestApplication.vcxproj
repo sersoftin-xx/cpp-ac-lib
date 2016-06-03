@@ -125,8 +125,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>D:\build-libcurl-windows-master\third-party\libcurl\lib\static-release-x86;D:\openssl-1.0.2h\out32;D:\libs\jsoncpp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libeay32.lib;ssleay32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalOptions>/VERBOSE:lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>libeay32.lib;ssleay32.lib;ws2_32.lib;jsoncpp.lib;wbemuuid.lib;libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
