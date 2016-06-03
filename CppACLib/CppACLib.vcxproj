@@ -34,6 +34,7 @@
     <ClCompile Include="TowerWmiInfo.cpp" />
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="WebException.cpp" />
+    <ClCompile Include="WmiException.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccessControl.h" />
@@ -51,6 +52,7 @@
     <ClInclude Include="TowerWmiInfo.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="WebException.h" />
+    <ClInclude Include="WmiException.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{78E2FC06-E56E-457F-BF13-8200CCF2CDE3}</ProjectGuid>

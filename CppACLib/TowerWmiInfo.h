@@ -4,6 +4,7 @@
 #include <Wbemidl.h>
 #include "Baseboard.h"
 #include "SystemEnclosure.h"
+#include "WmiException.h"
 
 namespace AccessControlLibrary
 {

@@ -74,6 +74,9 @@
     <ClInclude Include="CurlException.h">
       <Filter>Заголовочные файлы\Exceptions</Filter>
     </ClInclude>
+    <ClInclude Include="WmiException.h">
+      <Filter>Заголовочные файлы\Exceptions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Configuration.cpp">
@@ -119,6 +122,9 @@
       <Filter>Файлы исходного кода\Entities</Filter>
     </ClCompile>
     <ClCompile Include="CurlException.cpp">
+      <Filter>Файлы исходного кода\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="WmiException.cpp">
       <Filter>Файлы исходного кода\Exceptions</Filter>
     </ClCompile>
   </ItemGroup>

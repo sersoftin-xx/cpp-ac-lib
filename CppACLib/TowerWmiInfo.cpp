@@ -1,4 +1,5 @@
 #include "TowerWmiInfo.h"
+
 namespace AccessControlLibrary
 {
 	namespace Hardware
@@ -149,7 +150,7 @@ namespace AccessControlLibrary
 			if (FAILED(hresult))
 			{
 				_bstr_t error_message = _com_error(hresult).ErrorMessage();
-				throw std::exception(error_message);
+				throw Exceptions::WmiException(error_message);
 			}
 		}
 	}
