@@ -21,6 +21,12 @@
     <Filter Include="Файлы исходного кода\Hardware">
       <UniqueIdentifier>{0a328924-995b-4679-a403-9f2335e75af6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\Exceptions">
+      <UniqueIdentifier>{46a81f9c-71f1-4923-b62a-7d8b5f6da106}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Exceptions">
+      <UniqueIdentifier>{a4ab1541-a3d6-435d-935a-7a6cd9f2bf71}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Configuration.h">
@@ -56,6 +62,18 @@
     <ClInclude Include="Tower.h">
       <Filter>Заголовочные файлы\Hardware</Filter>
     </ClInclude>
+    <ClInclude Include="CertificateCheckException.h">
+      <Filter>Заголовочные файлы\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="WebException.h">
+      <Filter>Заголовочные файлы\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="Error.h">
+      <Filter>Заголовочные файлы\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="CurlException.h">
+      <Filter>Заголовочные файлы\Exceptions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Configuration.cpp">
@@ -90,6 +108,18 @@
     </ClCompile>
     <ClCompile Include="Tower.cpp">
       <Filter>Файлы исходного кода\Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="CertificateCheckException.cpp">
+      <Filter>Файлы исходного кода\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="WebException.cpp">
+      <Filter>Файлы исходного кода\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="Error.cpp">
+      <Filter>Файлы исходного кода\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="CurlException.cpp">
+      <Filter>Файлы исходного кода\Exceptions</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

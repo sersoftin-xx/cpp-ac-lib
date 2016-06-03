@@ -1,4 +1,5 @@
 #include "Api.h"
+#include "CurlException.h"
 
 namespace AccessControlLibrary
 {
@@ -6,11 +7,11 @@ namespace AccessControlLibrary
 	{
 		_base_url = base_url;
 		_certHash = cert_hash;
-		if (curl_global_init(CURL_GLOBAL_ALL) != CURLE_OK)
-			throw std::exception("Failed curl initilization");
 		_curl = curl_easy_init();
-		curl_easy_setopt(_curl, CURLOPT_SSL_VERIFYPEER, 1L);
-		curl_easy_setopt(_curl, CURLOPT_SSL_VERIFYHOST, 1L);
+		curl_easy_setopt(_curl, CURLOPT_SSL_VERIFYPEER, 0L);
+		curl_easy_setopt(_curl, CURLOPT_SSL_VERIFYHOST, 0L);
+		curl_easy_setopt(_curl, CURLOPT_WRITEFUNCTION, writeResponseCallback);
+		curl_easy_setopt(_curl, CURLOPT_CERTINFO, 1L);
 	}
 
 	std::vector<Entities::Product> Api::getProductsList() const
@@ -62,32 +63,79 @@ namespace AccessControlLibrary
 	std::string Api::executeGetApiMethod(std::string method_name) const
 	{
 		curl_easy_setopt(_curl, CURLOPT_URL, (_base_url + "client_api" + method_name).c_str());
-		curl_easy_setopt(_curl, CURLOPT_WRITEFUNCTION, writeResponseCallback);
-		std::stringstream response_stream;
-		curl_easy_setopt(_curl, CURLOPT_WRITEDATA, &response_stream);
+		curl_easy_setopt(_curl, CURLOPT_CUSTOMREQUEST, "GET");
+		std::string response;
+		curl_easy_setopt(_curl, CURLOPT_WRITEDATA, &response);
 		auto error_code = curl_easy_perform(_curl);
 		if (error_code != CURLE_OK)
-		{
-			throw std::exception(curl_easy_strerror(error_code));
-		}
-		return response_stream.str();
+			throw Exceptions::CurlException(error_code);
+		if (!checkCert(_curl, _certHash))
+			throw Exceptions::CertificateCheckException("Invalid SSL sertificate accepted.");
+		int respose_code;
+		curl_easy_getinfo(_curl, CURLINFO_RESPONSE_CODE, &respose_code);
+		if (respose_code != 200)
+			throw Exceptions::WebException("Server error", response, respose_code);
+		return response;
 	}
 
 	std::string Api::executePostApiMethod(std::string method_name, Entities::AccessRequest request_body) const
 	{
-		return std::string();
+		curl_easy_setopt(_curl, CURLOPT_URL, (_base_url + "client_api" + method_name).c_str());
+		curl_easy_setopt(_curl, CURLOPT_CUSTOMREQUEST, "POST");
+		curl_easy_setopt(_curl, CURLOPT_POSTFIELDS, request_body.Serialize());
+		std::string response;
+		curl_easy_setopt(_curl, CURLOPT_WRITEDATA, &response);
+		auto error_code = curl_easy_perform(_curl);
+		if (error_code != CURLE_OK)
+			throw std::exception(curl_easy_strerror(error_code));
+		if (!checkCert(_curl, _certHash))
+			throw Exceptions::CertificateCheckException("Invalid SSL sertificate accepted.");
+		int respose_code;
+		curl_easy_getinfo(_curl, CURLINFO_RESPONSE_CODE, &respose_code);
+		if (respose_code != 200)
+			throw Exceptions::WebException("Server error", response, respose_code);
+		return response;
 	}
 
-	size_t Api::writeResponseCallback(void* ptr, size_t size, size_t nmemb, void * stream)
+	size_t Api::writeResponseCallback(char* ptr, size_t size, size_t nmemb, std::string * str)
 	{
-		fwrite(ptr, size, nmemb, static_cast<FILE*>(stream));
-		return (nmemb*size);
+		str->append(ptr, nmemb*size);
+		return nmemb * size;
+	}
+
+	bool Api::checkCert(CURL* curl, std::array<unsigned char, 20> valid_fingerprint) const
+	{
+		union {
+			struct curl_slist    *to_info;
+			struct curl_certinfo *to_certinfo;
+		} ptr;
+		ptr.to_info = nullptr;
+
+		auto res = curl_easy_getinfo(curl, CURLINFO_CERTINFO, &ptr.to_info);
+
+		if (res == CURLE_OK && ptr.to_info && ptr.to_certinfo->num_of_certs)
+		{
+			for (auto slist = ptr.to_certinfo->certinfo[0]; slist; slist = slist->next)
+			{
+				if (strstr(slist->data, "Cert:"))
+				{
+					auto bio = BIO_new(BIO_s_mem());
+					X509 *certificate;
+					BIO_puts(bio, slist->data + strlen("Cert:"));
+					certificate = PEM_read_bio_X509(bio, nullptr, nullptr, nullptr);
+					unsigned char fprint[20];
+					X509_digest(certificate, EVP_sha1(), fprint, nullptr);
+					return memcmp(valid_fingerprint.data(), fprint, 20) == 0;
+				}
+			}
+		}
+
+		return false;
 	}
 
 	Api::~Api()
 	{
 		curl_easy_cleanup(_curl);
-		curl_global_cleanup();
 	}
 }
 

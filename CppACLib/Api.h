@@ -1,11 +1,15 @@
 #pragma once
 #include <array>
+#include "CertificateCheckException.h"
+#include "CurlException.h"
+#include "WebException.h"
 #include "AccessRequest.h"
 #include "Product.h"
 #include "Bid.h"
 #include <vector>
 #include <curl/curl.h>
-#include <sstream>
+#include <openssl/bio.h>
+#include <openssl/pem.h>
 
 namespace AccessControlLibrary
 {
@@ -30,6 +34,7 @@ namespace AccessControlLibrary
 		std::string executeGetApiMethod(std::string method_name) const;
 		std::string executePostApiMethod(std::string method_name, Entities::AccessRequest request_body) const;
 
-		static size_t writeResponseCallback(void *ptr, size_t size, size_t nmemb, void *stream);
+		static size_t writeResponseCallback(char* ptr, size_t size, size_t nmemb, std::string * str);
+		bool checkCert(CURL * curl, std::array<unsigned char, 20> valid_fingerprint) const;
 	};
 }

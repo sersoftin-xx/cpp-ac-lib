@@ -24,12 +24,16 @@
     <ClCompile Include="Api.cpp" />
     <ClCompile Include="Baseboard.cpp" />
     <ClCompile Include="Bid.cpp" />
+    <ClCompile Include="CertificateCheckException.cpp" />
     <ClCompile Include="Configuration.cpp" />
+    <ClCompile Include="CurlException.cpp" />
+    <ClCompile Include="Error.cpp" />
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="SystemEnclosure.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="TowerWmiInfo.cpp" />
     <ClCompile Include="Util.cpp" />
+    <ClCompile Include="WebException.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccessControl.h" />
@@ -37,12 +41,16 @@
     <ClInclude Include="Api.h" />
     <ClInclude Include="Baseboard.h" />
     <ClInclude Include="Bid.h" />
+    <ClInclude Include="CertificateCheckException.h" />
     <ClInclude Include="Configuration.h" />
+    <ClInclude Include="CurlException.h" />
+    <ClInclude Include="Error.h" />
     <ClInclude Include="Product.h" />
     <ClInclude Include="SystemEnclosure.h" />
     <ClInclude Include="Tower.h" />
     <ClInclude Include="TowerWmiInfo.h" />
     <ClInclude Include="Util.h" />
+    <ClInclude Include="WebException.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{78E2FC06-E56E-457F-BF13-8200CCF2CDE3}</ProjectGuid>
@@ -130,7 +138,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>D:\libs\curl\include;D:\libs\openssl\include;D:\libs\jsoncpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\build-libcurl-windows-master\third-party\libcurl\include;D:\libs\openssl\include;D:\libs\jsoncpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>None</DebugInformationFormat>
     </ClCompile>
     <Link>
@@ -139,8 +147,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>D:\libs\curl\lib;D:\libs\openssl\lib;D:\libs\jsoncpp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>jsoncpp.lib;wbemuuid.lib;libcurl_a.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\build-libcurl-windows-master\third-party\libcurl\lib\static-release-x86;D:\libs\openssl\lib;D:\libs\jsoncpp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>jsoncpp.lib;wbemuuid.lib;libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
