@@ -82,11 +82,11 @@ namespace AccessControlLibrary
 			Json::Reader reader;
 			if (!reader.parse(json_content, root))
 				return false;
-			_id = root.get("id", 0).asInt();
-			_product_id = root.get("product_id", 0).asInt();
-			_pc_id = root.get("pc_id", 0).asInt();
-			_is_active = root.get("is_active", false).asBool();
-			_is_expired = root.get("is_expired", true).asBool();
+			_id = root[parent_root].get("id", 0).asInt();
+			_product_id = root[parent_root].get("product_id", 0).asInt();
+			_pc_id = root[parent_root].get("pc_id", 0).asInt();
+			_is_active = root[parent_root].get("is_active", false).asBool();
+			_is_expired = root[parent_root].get("is_expired", true).asBool();
 			return true;
 		}
 

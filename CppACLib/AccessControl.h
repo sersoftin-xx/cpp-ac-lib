@@ -17,8 +17,8 @@ namespace AccessControlLibrary
 		bool accessAllowed() const;
 		bool accessAllowed(int product_id) const;
 
-		Entities::Bid requestAccess();
-		Entities::Bid requestAccess(int product_id);
+		Entities::Bid requestAccess() const;
+		Entities::Bid requestAccess(int product_id) const;
 
 		std::vector<Entities::Product> getProducts() const;
 		Entities::Product getProductInfo(int product_id) const;

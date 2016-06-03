@@ -11,7 +11,9 @@ namespace AccessControlLibrary
 	AccessControl::AccessControl(Configuration* configuration)
 	{
 		_config = configuration;
-		_api = new Api(_config->getBaseApiUrl(), _config->getPublicKeyHash());
+		_api = new Api(_config->getBaseApiUrl(), _config->getCheckCert());
+		if (_config->getCheckCert())
+			_api->setPublicKeyHash(_config->getPublicKeyHash());
 	}
 
 	bool AccessControl::accessAllowed() const
@@ -33,18 +35,15 @@ namespace AccessControlLibrary
 		}
 	}
 
-	Entities::Bid AccessControl::requestAccess()
+	Entities::Bid AccessControl::requestAccess() const
 	{
-		Entities::Bid bid;
-
-		return bid;
+		return requestAccess(_config->getProductId());
 	}
 
-	Entities::Bid AccessControl::requestAccess(int product_id)
+	Entities::Bid AccessControl::requestAccess(int product_id) const
 	{
-		Entities::Bid bid;
-
-		return bid;
+		std::shared_ptr<Hardware::Tower> tower(new Hardware::Tower(_config->getHashSalt()));
+		return _api->add(tower->getPcName(), tower->getUniqueKey(), product_id);
 	}
 
 	std::vector<Entities::Product> AccessControl::getProducts() const

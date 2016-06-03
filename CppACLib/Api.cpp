@@ -3,11 +3,12 @@
 
 namespace AccessControlLibrary
 {
-	Api::Api(std::string base_url, std::array<unsigned char, 20> cert_hash)
+	Api::Api(std::string base_url, bool check_cert): _check_cert(check_cert)
 	{
 		_base_url = base_url;
-		_certHash = cert_hash;
+		_headers = curl_slist_append(nullptr, "Content-Type: application/json");
 		_curl = curl_easy_init();
+		curl_easy_setopt(_curl, CURLOPT_HTTPHEADER, _headers);
 		curl_easy_setopt(_curl, CURLOPT_SSL_VERIFYPEER, 0L);
 		curl_easy_setopt(_curl, CURLOPT_SSL_VERIFYHOST, 0L);
 		curl_easy_setopt(_curl, CURLOPT_WRITEFUNCTION, writeResponseCallback);
@@ -42,7 +43,12 @@ namespace AccessControlLibrary
 		return product;
 	}
 
-	Entities::Bid Api::check(std::string pc_unique_key, int product_id)
+	void Api::setPublicKeyHash(std::array<unsigned char, 20> cert_hash)
+	{
+		_certHash = cert_hash;
+	}
+
+	Entities::Bid Api::check(std::string pc_unique_key, int product_id) const
 	{
 		Entities::Bid bid;
 		Entities::AccessRequest request_body;
@@ -54,9 +60,16 @@ namespace AccessControlLibrary
 		return bid;
 	}
 
-	Entities::Bid Api::add(std::string pc_name, std::string pc_unique_key, int product_id)
+	Entities::Bid Api::add(std::string pc_name, std::string pc_unique_key, int product_id) const
 	{
 		Entities::Bid bid;
+		Entities::AccessRequest request;
+		request.setPcName(pc_name);
+		request.setPcUniqueKey(pc_unique_key);
+		request.setProductId(product_id);
+		auto json_response = executePostApiMethod("/bids/add", request);
+		if (!bid.Deserialize(json_response, "bid"))
+			throw std::exception("Ivalid json data accepted.");
 		return bid;
 	}
 
@@ -69,7 +82,7 @@ namespace AccessControlLibrary
 		auto error_code = curl_easy_perform(_curl);
 		if (error_code != CURLE_OK)
 			throw Exceptions::CurlException(error_code);
-		if (!checkCert(_curl, _certHash))
+		if (_check_cert && !checkCert(_curl, _certHash))
 			throw Exceptions::CertificateCheckException("Invalid SSL sertificate accepted.");
 		int respose_code;
 		curl_easy_getinfo(_curl, CURLINFO_RESPONSE_CODE, &respose_code);
@@ -82,13 +95,15 @@ namespace AccessControlLibrary
 	{
 		curl_easy_setopt(_curl, CURLOPT_URL, (_base_url + "client_api" + method_name).c_str());
 		curl_easy_setopt(_curl, CURLOPT_CUSTOMREQUEST, "POST");
-		curl_easy_setopt(_curl, CURLOPT_POSTFIELDS, request_body.Serialize());
+		auto request = request_body.Serialize();
+		curl_easy_setopt(_curl, CURLOPT_POSTFIELDS, request.c_str());
+		curl_easy_setopt(_curl, CURLOPT_POSTFIELDSIZE, request.size());
 		std::string response;
 		curl_easy_setopt(_curl, CURLOPT_WRITEDATA, &response);
 		auto error_code = curl_easy_perform(_curl);
 		if (error_code != CURLE_OK)
 			throw std::exception(curl_easy_strerror(error_code));
-		if (!checkCert(_curl, _certHash))
+		if (_check_cert && !checkCert(_curl, _certHash))
 			throw Exceptions::CertificateCheckException("Invalid SSL sertificate accepted.");
 		int respose_code;
 		curl_easy_getinfo(_curl, CURLINFO_RESPONSE_CODE, &respose_code);
@@ -135,6 +150,7 @@ namespace AccessControlLibrary
 
 	Api::~Api()
 	{
+		curl_slist_free_all(_headers);
 		curl_easy_cleanup(_curl);
 	}
 }
